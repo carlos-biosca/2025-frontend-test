@@ -1,7 +1,16 @@
-:root {
-  font-family: "Roboto", sans-serif;
+@import url("https://fonts.googleapis.com/css2?family=Baloo+Bhaijaan+2:wght@400..800&family=Poppins:wght@400;500;600;700&display=swap");
 
+:root {
   --main-background: #2d2345;
+  --main-gradient: #372d5d;
+  --grey-text: #dad9d9;
+  --lime-green: #46bb46;
+  --light-purple: #4f2d54;
+  --dark-purple: #37284e;
+  --light-violet: #beb4f2;
+  --small-blue: #5ca4d4;
+
+  --semibold: 600;
 }
 
 * {
@@ -9,6 +18,7 @@
 }
 
 body {
+  font-family: "Poppins", sans-serif;
   margin: 0;
   padding: 0;
   min-height: 100vh;
@@ -16,6 +26,30 @@ body {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  background-color: var(--main-background);
   color: white;
+  background-image: linear-gradient(
+    to bottom,
+    var(--main-background),
+    var(--main-gradient)
+  );
+}
+
+ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
+
+p {
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
+input {
+  margin: 0;
+  padding: 0;
+  border: none;
+  outline: none;
+  box-shadow: none;
+  appearance: none;
 }

@@ -1,0 +1,81 @@
+.connect {
+  padding-top: 5rem;
+}
+
+.email {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 1rem 1.2rem;
+  margin-bottom: 5rem;
+}
+
+.email__input {
+  width: 100%;
+  height: 50px;
+  padding: 1.2rem;
+  margin-bottom: 3rem;
+  border-radius: 5px;
+  background-color: white;
+
+  &::placeholder {
+    font-weight: var(--semibold);
+  }
+}
+
+.email__label {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 2rem;
+}
+
+.email__checkbox {
+  position: relative;
+  width: 20px;
+  height: 20px;
+  background-color: transparent;
+  border: 1px solid white;
+  border-radius: 5px;
+  cursor: pointer;
+
+  &:checked::before {
+    content: "✔";
+    color: #fff;
+    position: absolute;
+    left: 3px;
+    top: -2px;
+    font-size: 1.2em;
+  }
+}
+
+.email__button {
+  width: 100%;
+  padding: 1.2rem;
+  line-height: 1.2rem;
+  cursor: pointer;
+  font-size: 1.2rem;
+  font-weight: 600;
+  border-radius: 5px;
+  background-color: var(--light-violet);
+  font-family: inherit;
+
+  &:hover {
+    opacity: 0.8;
+  }
+}
+
+.connect__terms {
+  display: block;
+  padding: 1rem 1.2rem 2rem;
+  text-align: center;
+
+  & span {
+    color: var(--small-blue);
+    cursor: pointer;
+
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+}

@@ -1,6 +1,11 @@
 .benefits {
   color: var(--grey-text);
   margin-bottom: 5rem;
+
+  @media (min-width: 1440px) {
+    margin-top: 3rem;
+    margin-bottom: 4.4rem;
+  }
 }
 
 .benefits__item {

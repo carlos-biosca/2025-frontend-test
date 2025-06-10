@@ -1,0 +1,35 @@
+.benefits {
+  color: var(--grey-text);
+  margin-bottom: 5rem;
+}
+
+.benefits__item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 1rem 1.2rem;
+}
+
+.benefits__item--gradient {
+  background-image: linear-gradient(
+    to right,
+    var(--light-purple),
+    var(--dark-purple)
+  );
+}
+
+.benefits__circle {
+  position: relative;
+  background-color: var(--lime-green);
+  min-width: 25px;
+  height: 25px;
+  border-radius: 50%;
+}
+
+.benefits__icon {
+  width: 25px;
+  height: 25px;
+  position: absolute;
+  z-index: 10;
+  left: 3px;
+}

@@ -1,0 +1,7 @@
+.digitinput {
+  display: block;
+  height: 55px;
+  border-radius: 5px;
+  font-size: 1.8rem;
+  text-align: center;
+}

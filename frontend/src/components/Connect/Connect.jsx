@@ -1,5 +1,6 @@
 import Benefits from "@components/common/Benefits";
 import Title from "@components/common/Title";
+import SubmitButton from "@components/common/SubmitButton";
 
 import "./Connect.css";
 
@@ -39,9 +40,7 @@ const Connect = () => {
             />
             Send Me Offers, News, and Fun Stuff!
           </label>
-          <button type="submit" className="email__button">
-            Connect
-          </button>
+          <SubmitButton text="Connect" />
         </form>
         <small className="connect__terms only-mobile">
           By continuing, you agree to our <span>Terms & Conditions</span> and{" "}

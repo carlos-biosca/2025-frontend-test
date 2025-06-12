@@ -5,11 +5,16 @@
   --main-gradient: #372d5d;
   --grey-text: #dad9d9;
   --lime-green: #46bb46;
+  --light-green: #63ee63;
   --light-purple: #4f2d54;
   --dark-purple: #37284e;
+  --plan-violet: #483c76;
+  --plan-gradient: #3a2d5d;
   --light-violet: #beb4f2;
+  --dark-violet: #5a458e;
   --small-blue: #5ca4d4;
   --resend-blue: #7dd5fd;
+  --trial-yellow: #f8cd6a;
 
   --semibold: 600;
 }

@@ -13,3 +13,7 @@
     opacity: 0.8;
   }
 }
+
+.submitbutton--yellow {
+  background-color: var(--trial-yellow);
+}

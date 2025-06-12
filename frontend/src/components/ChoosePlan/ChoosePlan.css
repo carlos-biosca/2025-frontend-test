@@ -1,0 +1,33 @@
+.choose {
+  width: 100%;
+}
+
+.choose__options {
+  margin-top: 6rem;
+  padding: 1rem 1.2rem;
+}
+
+.choose__cancel {
+  text-align: center;
+  color: var(--light-violet);
+  margin-bottom: 4rem;
+}
+
+.choose__links {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin-top: 8rem;
+  color: var(--light-violet);
+  cursor: pointer;
+
+  & span {
+    text-decoration: underline;
+    margin-left: 10px;
+    margin-right: 10px;
+
+    &:hover {
+      color: white;
+    }
+  }
+}

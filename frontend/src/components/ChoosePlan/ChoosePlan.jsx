@@ -18,8 +18,8 @@ const ChoosePlan = () => {
       <Title title="Choose Your Plan" />
       <form action="" className="choose__options">
         <PlanOptions plan={plan} handlePlanChange={handlePlanChange} />
-        <p className="choose__cancel">Cancel anytime</p>
-        <SubmitButton text="Start my free trial" trial />
+        <p className="choose__cancel">Cancel anytime.</p>
+        <SubmitButton text="Start my free trial!" trial />
         <div className="choose__links">
           <span>Privacy Policy</span> | <span>Terms of Service</span> |{" "}
           <span>Restore</span>

@@ -1,16 +1,29 @@
 .choose {
-  width: 100%;
+  padding-top: 5rem;
+  padding-bottom: 1rem;
+
+  @media (min-width: 1440px) {
+    padding-top: 1rem;
+  }
 }
 
 .choose__options {
-  margin-top: 6rem;
+  margin-top: 5rem;
   padding: 1rem 1.2rem;
+
+  @media (min-width: 1440px) {
+    margin-top: 2.5rem;
+  }
 }
 
 .choose__cancel {
   text-align: center;
   color: var(--light-violet);
   margin-bottom: 4rem;
+
+  @media (min-width: 1440px) {
+    margin-bottom: 2rem;
+  }
 }
 
 .choose__links {
@@ -20,6 +33,10 @@
   margin-top: 8rem;
   color: var(--light-violet);
   cursor: pointer;
+
+  @media (min-width: 1440px) {
+    margin-top: 1.5rem;
+  }
 
   & span {
     text-decoration: underline;

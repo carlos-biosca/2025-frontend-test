@@ -1,0 +1,128 @@
+.plan {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 235px));
+  margin-bottom: 20px;
+  border: 3px solid transparent;
+  border-radius: 16px;
+  cursor: pointer;
+  overflow: hidden;
+
+  &:hover {
+    background: linear-gradient(
+        to right,
+        #cb9d99,
+        #c05d87 50%,
+        #c05d87 50%,
+        #48aad7
+      )
+      border-box;
+  }
+}
+
+.plan__input {
+  position: absolute;
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.plan__time {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 1rem;
+  background-color: var(--dark-violet);
+}
+
+.plan__circle {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+}
+
+.plan__circle--active {
+  background-color: var(--light-green);
+
+  & img {
+    display: block;
+  }
+}
+
+.plan__circle--empty {
+  border: 1px solid white;
+
+  & img {
+    display: none;
+  }
+}
+
+.plan__icon {
+  width: 10px;
+  height: 10px;
+}
+
+.plan__best {
+  font-size: 1.2rem;
+  color: var(--resend-blue);
+}
+
+.plan__title {
+  margin-top: 0;
+  margin-bottom: 0;
+  font-size: 1.5rem;
+  line-height: 1.5rem;
+}
+
+.plan__price {
+  background-image: linear-gradient(
+    to right,
+    var(--plan-violet),
+    var(--plan-gradient)
+  );
+  text-align: center;
+}
+
+.plan__discount {
+  width: fit-content;
+  margin-left: auto;
+  margin-right: 20px;
+  margin-bottom: -3px;
+  padding: 0.1rem 0.5rem;
+  background-color: var(--small-blue);
+  border-top-left-radius: 5px;
+  border-top-right-radius: 5px;
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: black;
+}
+
+.plan__value {
+  padding: 1.5rem 0 1.2rem;
+}
+
+.plan__money {
+  font-weight: 500;
+  margin-bottom: 0.8rem;
+
+  & span {
+    font-size: 1.3rem;
+    line-height: 1.3rem;
+    font-weight: 700;
+  }
+}
+
+.plan__annually {
+  font-size: 0.9rem;
+  color: var(--grey-text);
+}
+
+.plan__trial {
+  padding-top: 0.5rem;
+  padding-bottom: 0.5rem;
+  background-color: var(--main-background);
+  color: var(--trial-yellow);
+  text-align: center;
+}

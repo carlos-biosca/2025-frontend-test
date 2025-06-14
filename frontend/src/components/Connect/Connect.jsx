@@ -6,9 +6,10 @@ import SubmitButton from "@components/common/SubmitButton";
 
 import submitEmail from "@logic/submitEmail";
 import "./Connect.css";
+import { useFormContext } from "@context/useFormContext";
 
-const Connect = ({ nextStep }) => {
-  const [email, setEmail] = useState("");
+const Connect = () => {
+  const { email, setEmail, nextStep } = useFormContext();
   const [error, setError] = useState("");
 
   const handleEmailChange = e => setEmail(e.target.value);

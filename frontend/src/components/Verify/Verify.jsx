@@ -7,8 +7,10 @@ import SubmitButton from "@components/common/SubmitButton";
 
 import leftArrow from "@assets/left-arrow.svg";
 import "./Verify.css";
+import { useFormContext } from "@context/useFormContext";
 
 const Verify = () => {
+  const { email, prevStep } = useFormContext();
   const [code, setCode] = useState([]);
   const inputs = useRef([]);
 
@@ -26,18 +28,18 @@ const Verify = () => {
 
   return (
     <main className="verify">
-      <div className="verify__back">
+      <button type="button" onClick={prevStep} className="verify__back">
         <img src={leftArrow} alt="<" />
         <span>Modify email</span>
-      </div>
+      </button>
       <section className="verify__section">
         <Title
           title="Get Verified!"
           subtitle="Enter the one-time code we sent to:"
-          email="user@superlonguseremail.com"
+          email={email}
           classes="only-mobile"
         />
-        <Benefits verify />
+        <Benefits />
       </section>
       <section>
         <Title

@@ -9,6 +9,16 @@ export default defineConfig({
     alias: {
       '@components': '/src/components',
       '@assets': '/src/assets',
+      '@logic': '/src/logic',
+    },
+  },
+  server: {
+    proxy: {
+      '/api': {
+        target: 'http://localhost:8080',
+        changeOrigin: true,
+        secure: false,
+      },
     },
   },
 })

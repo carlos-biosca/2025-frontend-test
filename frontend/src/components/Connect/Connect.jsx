@@ -1,10 +1,24 @@
+import { useState } from "react";
+
 import Benefits from "@components/common/Benefits";
 import Title from "@components/common/Title";
 import SubmitButton from "@components/common/SubmitButton";
 
+import submitEmail from "@logic/submitEmail";
 import "./Connect.css";
 
-const Connect = () => {
+const Connect = ({ nextStep }) => {
+  const [email, setEmail] = useState("");
+  const [error, setError] = useState("");
+
+  const handleEmailChange = e => setEmail(e.target.value);
+
+  const handleSubmit = async e => {
+    const res = await submitEmail(e, email);
+    if (res.error) setError(res.error);
+    else nextStep();
+  };
+
   return (
     <main className="connect">
       <section>
@@ -25,11 +39,18 @@ const Connect = () => {
           subtitle="...and unlock your benefits!"
           classes="only-desktop"
         />
-        <form action="" className="email">
+        <form
+          action="POST"
+          onSubmit={handleSubmit}
+          autoComplete="off"
+          className="email"
+        >
           <input
-            type="email"
+            type="text"
             placeholder="Email Address"
             className="email__input"
+            value={email}
+            onChange={handleEmailChange}
           />
           <label htmlFor="offers" className="email__label">
             <input
@@ -41,6 +62,7 @@ const Connect = () => {
             Send Me Offers, News, and Fun Stuff!
           </label>
           <SubmitButton text="Connect" />
+          <p className="email__error">{error}</p>
         </form>
         <small className="connect__terms only-mobile">
           By continuing, you agree to our <span>Terms & Conditions</span> and{" "}

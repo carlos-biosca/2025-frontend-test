@@ -7,13 +7,13 @@ import ChoosePlan from "@components/ChoosePlan";
 import Congrats from "@components/Congrats";
 
 function App() {
-  const [currentStep, setCurrentStep] = useState(4);
+  const [currentStep, setCurrentStep] = useState(1);
   const nextStep = () => setCurrentStep(prev => prev + 1);
   const prevStep = () => setCurrentStep(prev => prev - 1);
 
   return (
     <>
-      {currentStep === 1 ? <Connect /> : null}
+      {currentStep === 1 ? <Connect nextStep={nextStep} /> : null}
       {currentStep === 2 ? <Verify /> : null}
       {currentStep === 3 ? <ChoosePlan /> : null}
       {currentStep === 4 ? <Congrats /> : null}

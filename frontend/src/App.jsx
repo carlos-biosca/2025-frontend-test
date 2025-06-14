@@ -7,7 +7,7 @@ import ChoosePlan from "@components/ChoosePlan";
 import Congrats from "@components/Congrats";
 
 function App() {
-  const [currentStep, setCurrentStep] = useState(3);
+  const [currentStep, setCurrentStep] = useState(4);
   const nextStep = () => setCurrentStep(prev => prev + 1);
   const prevStep = () => setCurrentStep(prev => prev - 1);
 

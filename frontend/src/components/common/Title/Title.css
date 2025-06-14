@@ -21,3 +21,7 @@
   text-align: center;
   line-height: 1rem;
 }
+
+.title__highlight {
+  color: var(--trial-yellow);
+}

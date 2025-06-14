@@ -5,6 +5,7 @@ import Benefits from "@components/common/Benefits";
 import DigitInput from "@components/common/DigitInput";
 import SubmitButton from "@components/common/SubmitButton";
 
+import leftArrow from "@assets/left-arrow.svg";
 import "./Verify.css";
 
 const Verify = () => {
@@ -25,6 +26,10 @@ const Verify = () => {
 
   return (
     <main className="verify">
+      <div className="verify__back">
+        <img src={leftArrow} alt="<" />
+        <span>Modify email</span>
+      </div>
       <section className="verify__section">
         <Title
           title="Get Verified!"
@@ -32,7 +37,7 @@ const Verify = () => {
           email="user@superlonguseremail.com"
           classes="only-mobile"
         />
-        <Benefits />
+        <Benefits verify />
       </section>
       <section>
         <Title

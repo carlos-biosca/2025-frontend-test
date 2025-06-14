@@ -1,11 +1,41 @@
 .verify {
-  padding-top: 5rem;
+  position: relative;
+  padding-top: 8rem;
 
   @media (min-width: 1440px) {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     column-gap: 50px;
     padding-top: 1rem;
+  }
+}
+
+.verify__back {
+  position: absolute;
+  top: 20px;
+  left: 20px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 0.5rem 0.5rem 0.5rem 0.8rem;
+  font-size: 0.75rem;
+  color: var(--light-violet);
+  border: 2px solid var(--light-violet);
+  border-radius: 5px;
+  cursor: pointer;
+
+  @media (min-width: 1440px) {
+    top: 0px;
+    left: 0px;
+  }
+
+  &:hover {
+    text-decoration: underline;
+  }
+
+  & img {
+    width: 15px;
+    height: 15px;
   }
 }
 

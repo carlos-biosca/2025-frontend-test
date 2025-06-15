@@ -4,4 +4,8 @@
   border-radius: 5px;
   font-size: 1.8rem;
   text-align: center;
+
+  &:focus {
+    outline: 5px solid var(--light-violet);
+  }
 }

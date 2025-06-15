@@ -1,17 +1,23 @@
 import { useState, useRef } from "react";
+import { useFormContext } from "@context/useFormContext";
 
 import Title from "@components/common/Title";
 import Benefits from "@components/common/Benefits";
 import DigitInput from "@components/common/DigitInput";
 import SubmitButton from "@components/common/SubmitButton";
+import ErrorMessage from "@components/common/ErrorMessage";
 
+import submitEmail from "@logic/submitEmail";
+import verifyCode from "@logic/verifyCode";
 import leftArrow from "@assets/left-arrow.svg";
 import "./Verify.css";
-import { useFormContext } from "@context/useFormContext";
+
+const initialCode = Array(6).fill("");
 
 const Verify = () => {
-  const { email, prevStep } = useFormContext();
-  const [code, setCode] = useState([]);
+  const { email, prevStep, nextStep, setUserId } = useFormContext();
+  const [code, setCode] = useState(initialCode);
+  const [error, setError] = useState("");
   const inputs = useRef([]);
 
   const handleDigitChange = (e, index) => {
@@ -24,6 +30,23 @@ const Verify = () => {
     if (index < 5 && isDigit) {
       inputs.current[index + 1].focus();
     }
+  };
+
+  const handleSubmit = async e => {
+    const stringCode = code.join("");
+    const res = await verifyCode(e, email, stringCode);
+    setCode(initialCode);
+    if (res.user_id) {
+      setUserId(res.user_id);
+      nextStep();
+    }
+    if (res.error) setError(res.error);
+  };
+
+  const handleResend = async e => {
+    setError("");
+    const res = await submitEmail(e, email);
+    if (res.error) setError(res.error);
   };
 
   return (
@@ -45,10 +68,10 @@ const Verify = () => {
         <Title
           title="Get Verified!"
           subtitle="Enter the one-time code we sent to:"
-          email="user@superlonguseremail.com"
+          email={email}
           classes="only-desktop"
         />
-        <form action="" className="digits">
+        <form action="POST" onSubmit={handleSubmit} className="digits">
           <div className="digits__container">
             {Array.from({ length: 6 }, (_, i) => (
               <DigitInput
@@ -60,12 +83,13 @@ const Verify = () => {
             ))}
           </div>
           <p className="resend only-desktop">
-            Didn't get an email? <span>Resend Code</span>
+            Didn't get an email? <span onClick={handleResend}>Resend Code</span>
           </p>
           <SubmitButton text="Verify" />
+          <ErrorMessage error={error} />
         </form>
         <p className="resend only-mobile">
-          Didn't get an email? <span>Resend Code</span>
+          Didn't get an email? <span onClick={handleResend}>Resend Code</span>
         </p>
       </section>
     </main>

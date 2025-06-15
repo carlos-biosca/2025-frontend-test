@@ -1,6 +1,6 @@
 import "./DigitInput.css";
 
-const DigitInput = ({ ref, handleDigitChange }) => {
+const DigitInput = ({ ref, handleDigitChange, value }) => {
   return (
     <input
       type="text"
@@ -9,6 +9,7 @@ const DigitInput = ({ ref, handleDigitChange }) => {
       maxLength={1}
       pattern="[0-9]"
       ref={ref}
+      value={value}
       onChange={handleDigitChange}
     />
   );

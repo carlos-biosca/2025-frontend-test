@@ -1,5 +1,5 @@
 .error {
-  color: red;
+  color: var(--error-red);
   height: 25px;
   padding: 0.2rem;
 }

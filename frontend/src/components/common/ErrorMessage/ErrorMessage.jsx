@@ -2,23 +2,36 @@ import { useEffect, useState } from "react";
 import "./ErrorMessage.css";
 
 const ErrorMessage = ({ error }) => {
-  const [secondsLeft, setSecondsLeft] = useState(30);
+  const initialCountdown = 30;
+  const hasCountdown = error.includes("30 seconds");
+
+  const [secondsLeft, setSecondsLeft] = useState(initialCountdown);
 
   useEffect(() => {
-    if (!error.includes("30 seconds") || secondsLeft === 0) return;
+    if (hasCountdown) {
+      setSecondsLeft(initialCountdown);
+    }
+  }, [hasCountdown]);
+
+  useEffect(() => {
+    if (!hasCountdown || secondsLeft === 0) return;
 
     const countdown = setTimeout(() => {
       setSecondsLeft(prevTime => prevTime - 1);
     }, 1000);
 
     return () => clearTimeout(countdown);
-  }, [secondsLeft, error]);
+  }, [secondsLeft, hasCountdown]);
 
-  const displayMessage = error.includes("30 seconds")
-    ? `Please wait ${secondsLeft} seconds before resending`
-    : error;
+  if (hasCountdown) {
+    return (
+      <p className="error">
+        Please wait {secondsLeft} seconds before resending
+      </p>
+    );
+  }
 
-  return <div className="error">{secondsLeft > 0 ? displayMessage : null}</div>;
+  return <p className="error">{error}</p>;
 };
 
 export default ErrorMessage;

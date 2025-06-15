@@ -27,6 +27,18 @@
   @media (min-width: 1440px) {
     display: flex;
     gap: 20px;
+    min-height: 223px;
+  }
+}
+
+.plan__loading {
+  width: 100%;
+  min-height: 317px;
+  display: grid;
+  place-items: center;
+
+  @media (min-width: 1440px) {
+    min-height: 223px;
   }
 }
 

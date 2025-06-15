@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { useFormContext } from "@context/useFormContext";
 
 import Title from "@components/common/Title";
 import SubmitButton from "@components/common/SubmitButton";
@@ -7,6 +8,7 @@ import PlanOptions from "@components/common/PlanOptions";
 import "./ChoosePlan.css";
 
 const ChoosePlan = () => {
+  const { userId, prevStep, nextStep } = useFormContext();
   const [plan, setPlan] = useState("");
 
   const handlePlanChange = e => {

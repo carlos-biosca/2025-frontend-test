@@ -17,6 +17,9 @@ const ChoosePlan = () => {
 
   return (
     <main className="choose">
+      <button type="button" onClick={prevStep} className="choose__back">
+        &#x2039;
+      </button>
       <Title title="Choose Your Plan" />
       <form action="" className="choose__options">
         <PlanOptions plan={plan} handlePlanChange={handlePlanChange} />

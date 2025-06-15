@@ -60,3 +60,9 @@ input {
   box-shadow: none;
   appearance: none;
 }
+
+button {
+  background: none;
+  border: none;
+  padding: 0;
+}

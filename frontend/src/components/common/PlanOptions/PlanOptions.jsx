@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 
+import Spinner from "@components/common/Spinner";
 import getProducts from "@logic/getProducts";
 
 import plancheck from "@assets/plan-check.svg";
@@ -23,7 +24,9 @@ const PlanOptions = ({ plan, handlePlanChange, currency }) => {
   return (
     <div className="plan__container">
       {loading ? (
-        <div className="plan__loading">Loading...</div>
+        <div className="plan__loading">
+          <Spinner />
+        </div>
       ) : (
         <>
           <div className="plan__yearly">

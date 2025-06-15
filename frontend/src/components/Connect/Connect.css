@@ -56,12 +56,6 @@
   }
 }
 
-.email__error {
-  color: red;
-  height: 25px;
-  padding: 0.2rem;
-}
-
 .connect__terms {
   padding: 1rem 1.2rem 2rem;
   text-align: center;

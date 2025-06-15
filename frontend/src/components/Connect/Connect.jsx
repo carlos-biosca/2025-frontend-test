@@ -1,12 +1,13 @@
 import { useState } from "react";
+import { useFormContext } from "@context/useFormContext";
 
 import Benefits from "@components/common/Benefits";
 import Title from "@components/common/Title";
 import SubmitButton from "@components/common/SubmitButton";
+import ErrorMessage from "@components/common/ErrorMessage/ErrorMessage";
 
 import submitEmail from "@logic/submitEmail";
 import "./Connect.css";
-import { useFormContext } from "@context/useFormContext";
 
 const Connect = () => {
   const { email, setEmail, nextStep } = useFormContext();
@@ -63,7 +64,7 @@ const Connect = () => {
             Send Me Offers, News, and Fun Stuff!
           </label>
           <SubmitButton text="Connect" />
-          <p className="email__error">{error}</p>
+          <ErrorMessage error="Please wait 30 seconds before resending" />
         </form>
         <small className="connect__terms only-mobile">
           By continuing, you agree to our <span>Terms & Conditions</span> and{" "}

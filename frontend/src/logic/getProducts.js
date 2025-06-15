@@ -8,7 +8,23 @@ const getProducts = async () => {
       }
     });
     const data = await res.json();
-    return data
+    const products = {
+      monthly: {
+        price: {
+          us: data.monthly.price,
+          eu: (data.monthly.price * 0.84).toFixed(2).toString()
+        },
+        trial_days: data.monthly.trial_days
+      },
+      year: {
+        price: {
+          us: data.year.price,
+          eu: (data.year.price * 0.84).toFixed(2).toString()
+        },
+        trial_days: data.year.trial_days
+      }
+    };
+    return products
   } catch (error) {
     console.log(error);
   }

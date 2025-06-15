@@ -24,7 +24,7 @@
   cursor: pointer;
 
   @media (min-width: 1440px) {
-    left: -200px;
+    left: -100px;
   }
 
   &:hover {

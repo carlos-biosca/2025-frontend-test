@@ -5,7 +5,7 @@ import getProducts from "@logic/getProducts";
 import plancheck from "@assets/plan-check.svg";
 import "./PlanOptions.css";
 
-const PlanOptions = ({ plan, handlePlanChange }) => {
+const PlanOptions = ({ plan, handlePlanChange, currency }) => {
   const [products, setProducts] = useState(null);
   const [loading, setLoading] = useState(true);
 
@@ -56,7 +56,12 @@ const PlanOptions = ({ plan, handlePlanChange }) => {
               <div className="plan__price">
                 <div className="plan__value">
                   <p className="plan__money">
-                    <span>$ {products?.year.price}</span> /year
+                    <span>
+                      {currency === "USD"
+                        ? `$ ${products?.year.price.us}`
+                        : `${products?.year.price.eu} €`}
+                    </span>{" "}
+                    /year
                   </p>
                   <p className="plan__annually">Billed annually</p>
                 </div>
@@ -93,7 +98,12 @@ const PlanOptions = ({ plan, handlePlanChange }) => {
             <div className="plan__price">
               <div className="plan__value">
                 <p className="plan__money">
-                  <span>$ {products?.monthly.price}</span> /year
+                  <span>
+                    {currency === "USD"
+                      ? `$ ${products?.year.price.us}`
+                      : `${products?.year.price.eu} €`}
+                  </span>{" "}
+                  /year
                 </p>
                 <p className="plan__annually">Billed monthly</p>
               </div>

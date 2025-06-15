@@ -1,6 +1,5 @@
-const submitEmail = async (event, email) => {
+const submitEmail = async (email) => {
   console.log("getmail");
-  event.preventDefault();
   try {
     const res = await fetch(`/api/send-email?email=${email}`, {
       method: "GET",

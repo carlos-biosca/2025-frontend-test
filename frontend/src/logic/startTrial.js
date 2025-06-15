@@ -1,12 +1,12 @@
-const verifyCode = async (email, code) => {
-  console.log("validateemail");
+const startTrial = async (user_id) => {
+  console.log("starttrial");
   try {
-    const res = await fetch("/api/validate-email", {
+    const res = await fetch("/api/start-trial", {
       method: "POST",
       headers: {
         "Content-Type": "application/json"
       },
-      body: JSON.stringify({ email, code })
+      body: JSON.stringify({ user_id })
     });
     const data = await res.json();
     return data
@@ -15,4 +15,4 @@ const verifyCode = async (email, code) => {
   }
 };
 
-export default verifyCode
+export default startTrial

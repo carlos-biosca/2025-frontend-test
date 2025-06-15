@@ -33,8 +33,9 @@ const Verify = () => {
   };
 
   const handleSubmit = async e => {
+    e.preventDefault();
     const stringCode = code.join("");
-    const res = await verifyCode(e, email, stringCode);
+    const res = await verifyCode(email, stringCode);
     setCode(initialCode);
     if (res.user_id) {
       setUserId(res.user_id);
@@ -44,8 +45,9 @@ const Verify = () => {
   };
 
   const handleResend = async e => {
+    e.preventDefault();
     setError("");
-    const res = await submitEmail(e, email);
+    const res = await submitEmail(email);
     if (res.error) setError(res.error);
   };
 

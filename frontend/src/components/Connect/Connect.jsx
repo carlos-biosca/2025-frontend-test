@@ -16,7 +16,8 @@ const Connect = () => {
   const handleEmailChange = e => setEmail(e.target.value);
 
   const handleSubmit = async e => {
-    const res = await submitEmail(e, email);
+    e.preventDefault();
+    const res = await submitEmail(email);
     if (res.error) setError(res.error);
     else nextStep();
   };

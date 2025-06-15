@@ -1,12 +1,12 @@
 const submitEmail = async (event, email) => {
+  console.log("getmail");
   event.preventDefault();
   try {
-    const res = await fetch("/api/send-email", {
-      method: "POST",
+    const res = await fetch(`/api/send-email?email=${email}`, {
+      method: "GET",
       headers: {
         "Content-Type": "application/json"
-      },
-      body: JSON.stringify({ email })
+      }
     });
     const data = await res.json();
     return data

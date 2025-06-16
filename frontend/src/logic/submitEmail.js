@@ -1,5 +1,4 @@
 const submitEmail = async (email) => {
-  console.log("getmail");
   try {
     const res = await fetch(`/api/send-email?email=${email}`, {
       method: "GET",

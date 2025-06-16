@@ -1,5 +1,4 @@
 const getProducts = async () => {
-  console.log("getproducts");
   try {
     const res = await fetch('/api/products', {
       method: "GET",

@@ -3,7 +3,7 @@ import { FormContext } from "./FormContext";
 
 export const FormProvider = ({ children }) => {
   const [currentStep, setCurrentStep] = useState(0);
-  const [email, setEmail] = useState("test@mail.com");
+  const [email, setEmail] = useState("");
   const [userId, setUserId] = useState(null);
 
   const nextStep = () => setCurrentStep(currentStep + 1);

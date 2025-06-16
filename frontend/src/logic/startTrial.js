@@ -1,5 +1,4 @@
 const startTrial = async (user_id) => {
-  console.log("starttrial");
   try {
     const res = await fetch("/api/start-trial", {
       method: "POST",

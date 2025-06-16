@@ -1,5 +1,4 @@
 const verifyCode = async (email, code) => {
-  console.log("validateemail");
   try {
     const res = await fetch("/api/validate-email", {
       method: "POST",

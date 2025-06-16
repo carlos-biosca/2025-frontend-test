@@ -9,13 +9,6 @@
   border-radius: 5px;
   background-color: var(--light-violet);
   font-family: inherit;
-  transition: opacity 0.2s ease;
-
-  @media (min-width: 1440px) {
-    &:hover {
-      opacity: 0.8;
-    }
-  }
 }
 
 .submitbutton--yellow {

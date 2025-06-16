@@ -1,10 +1,13 @@
+import createRippleEffect from "@logic/ripple";
+
 import "./SubmitButton.css";
 
 const SubmitButton = ({ text, trial }) => {
   return (
     <button
       type="submit"
-      className={`submitbutton ${trial && "submitbutton--yellow"}`}
+      className={`submitbutton ripple ${trial ? "submitbutton--yellow" : ""}`}
+      onClick={createRippleEffect}
     >
       {text}
     </button>

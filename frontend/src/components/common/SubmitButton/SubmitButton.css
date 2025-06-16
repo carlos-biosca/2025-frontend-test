@@ -9,10 +9,12 @@
   border-radius: 5px;
   background-color: var(--light-violet);
   font-family: inherit;
-  transition: opacity 0.25s ease;
+  transition: opacity 0.2s ease;
 
-  &:hover {
-    opacity: 0.8;
+  @media (min-width: 1440px) {
+    &:hover {
+      opacity: 0.8;
+    }
   }
 }
 
@@ -21,5 +23,28 @@
   @media (min-width: 1440px) {
     max-width: 70%;
     margin: 0 auto;
+  }
+}
+
+.ripple {
+  position: relative;
+  overflow: hidden;
+  transform: translateZ(0);
+}
+
+.ripple__effect {
+  position: absolute;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  animation: ripple-animate 1.2s linear;
+  background: rgba(255, 255, 255, 0.5);
+  pointer-events: none;
+}
+
+@keyframes ripple-animate {
+  to {
+    transform: scale(4);
+    opacity: 0;
   }
 }

@@ -1,7 +1,7 @@
 .title {
   text-align: center;
   line-height: 2.5rem;
-  font-weight: 700;
+  font-weight: var(--bold);
   margin-bottom: 0.3rem;
   padding-left: 0.8rem;
   padding-right: 0.8rem;

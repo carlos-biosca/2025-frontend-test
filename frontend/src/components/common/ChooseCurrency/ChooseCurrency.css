@@ -25,5 +25,5 @@
 .choose__currency--selected {
   background-color: var(--dark-violet);
   color: white;
-  font-weight: 700;
+  font-weight: var(--bold);
 }

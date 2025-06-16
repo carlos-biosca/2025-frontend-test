@@ -22,7 +22,7 @@
   height: 50px;
   padding: 1.2rem;
   margin-bottom: 3rem;
-  border-radius: 5px;
+  border-radius: var(--small-radius);
   background-color: white;
 
   &::placeholder {
@@ -43,7 +43,7 @@
   height: 20px;
   background-color: transparent;
   border: 1px solid white;
-  border-radius: 5px;
+  border-radius: var(--small-radius);
   cursor: pointer;
 
   &:checked::before {

@@ -18,6 +18,11 @@
   --error-red: #ff4f4f;
 
   --semibold: 600;
+  --bold: 700;
+
+  --small-radius: 5px;
+
+  --desktop: 1440px;
 }
 
 * {

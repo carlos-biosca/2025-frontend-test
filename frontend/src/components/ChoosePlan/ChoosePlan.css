@@ -20,7 +20,7 @@
   border-radius: 50%;
   padding-bottom: 0.2rem;
   font-size: 2rem;
-  font-weight: 700;
+  font-weight: var(--bold);
   cursor: pointer;
 
   @media (min-width: 1440px) {

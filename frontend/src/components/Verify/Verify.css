@@ -22,7 +22,7 @@
   color: var(--light-violet);
   background-color: transparent;
   border: 2px solid var(--light-violet);
-  border-radius: 5px;
+  border-radius: var(--small-radius);
   cursor: pointer;
 
   @media (min-width: 1440px) {

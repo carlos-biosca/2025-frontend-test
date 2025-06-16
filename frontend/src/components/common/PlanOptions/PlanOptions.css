@@ -52,10 +52,10 @@
   right: 25px;
   padding: 0.1rem 0.5rem;
   background-color: var(--small-blue);
-  border-top-left-radius: 5px;
-  border-top-right-radius: 5px;
+  border-top-left-radius: var(--small-radius);
+  border-top-right-radius: var(--small-radius);
   font-size: 0.9rem;
-  font-weight: 600;
+  font-weight: var(--semibold);
   color: black;
 }
 
@@ -161,7 +161,7 @@
   & span {
     font-size: 1.3rem;
     line-height: 1.3rem;
-    font-weight: 700;
+    font-weight: var(--bold);
 
     @media (min-width: 1440px) {
       font-size: 1.5rem;

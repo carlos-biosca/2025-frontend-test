@@ -5,8 +5,8 @@
   line-height: 1.2rem;
   cursor: pointer;
   font-size: 1.2rem;
-  font-weight: 600;
-  border-radius: 5px;
+  font-weight: var(--semibold);
+  border-radius: var(--small-radius);
   background-color: var(--light-violet);
   font-family: inherit;
 }

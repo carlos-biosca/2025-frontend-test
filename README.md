@@ -2,11 +2,12 @@
 
 ## How to use
 
-1. Start the server with `npm run server`
-2. Open a new console and navigate to the frontend directory `cd frontend`
-3. Install frontend dependencies with `npm install`
-4. Run the frontend development server with `npm run dev`
-5. Open a tab in `http://localhost:5173/`
+1. Clone the repository.
+2. Open console and start the server with `npm run server`
+3. Open a new console and navigate to the frontend directory `cd frontend`
+4. Install frontend dependencies with `npm install`
+5. Run the frontend development server with `npm run dev`
+6. Open a tab in `http://localhost:5173/`
 
 ## Steps
 

@@ -2,11 +2,11 @@
 
 ## How to use
 
-2. Install the dependencies with `npm install`
-3. Start the server with `npm run server`
-4. Open a new console and navigate to the frontend directory `cd frontend`
-5. Install frontend dependencies with `npm install`
-6. Run the frontend development server with `npm run dev`
+1. Start the server with `npm run server`
+2. Open a new console and navigate to the frontend directory `cd frontend`
+3. Install frontend dependencies with `npm install`
+4. Run the frontend development server with `npm run dev`
+5. Open a tab in `http://localhost:5173/`
 
 ## Steps
 
@@ -35,3 +35,5 @@ All the images and icons used in the project are in the /assets folder, and I im
 React components are organized using a “one folder per component” structure to keep things tidy. The smaller, reusable components are inside the /common folder. Only the main MultiStepForm component sits on its own.
 
 All the server requests are in the /logic folder. I use try...catch with async/await to catch any errors during requests and to keep the code nice and readable.
+
+I have created a context to pass data needed through all the different screens and the function to move between them.

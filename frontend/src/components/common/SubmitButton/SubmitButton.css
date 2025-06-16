@@ -27,10 +27,8 @@
 
 .ripple__effect {
   position: absolute;
-  width: 50px;
-  height: 50px;
   border-radius: 50%;
-  animation: ripple-animate 1.2s linear;
+  animation: ripple-animate 0.75s linear;
   background: rgba(255, 255, 255, 0.5);
   pointer-events: none;
 }

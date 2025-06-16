@@ -1,18 +1,22 @@
 const createRippleEffect = event => {
-  const buttonElement = event.currentTarget;
-  const rippleX = event.clientX - buttonElement.offsetLeft;
-  const rippleY = event.clientY - buttonElement.offsetTop;
-  const rippleElement = document.createElement("span");
+  const button = event.currentTarget;
 
-  rippleElement.className = "ripple__effect";
-  rippleElement.style.left = `${rippleX}px`;
-  rippleElement.style.top = `${rippleY}px`;
+  const rect = button.getBoundingClientRect();
+  const size = Math.max(rect.width, rect.height);
+  const x = event.clientX - rect.left - size / 4;
+  const y = event.clientY - rect.top - size / 4;
 
-  buttonElement.appendChild(rippleElement);
+  const ripple = document.createElement('span');
+  ripple.className = 'ripple__effect';
+  ripple.style.width = ripple.style.height = `${size / 2}px`;
+  ripple.style.left = `${x}px`;
+  ripple.style.top = `${y}px`;
 
-  setTimeout(() => {
-    rippleElement.remove();
-  }, 1000);
+  button.appendChild(ripple);
+
+  ripple.addEventListener('animationend', () => {
+    ripple.remove();
+  });
 };
 
 export default createRippleEffect;

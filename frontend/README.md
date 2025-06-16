@@ -1,12 +1,37 @@
-# React + Vite
+# Technical Assessment - Frontend Engineer Position
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+## How to use
 
-Currently, two official plugins are available:
+2. Install the dependencies with `npm install`
+3. Start the server with `npm run server`
+4. Open a new console and navigate to the frontend directory `cd frontend`
+5. Install frontend dependencies with `npm install`
+6. Run the frontend development server with `npm run dev`
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## Steps
 
-## Expanding the ESLint configuration
+1. Connect your account introducing a valid email.
+2. Get verified with the code received in the terminal.
+3. Choose a currency and plan for subscription.
+4. Congrats! You're a new subscriber.
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+## Technologies used
+
+- Vite
+- React
+- Css
+- Javascript
+
+## Technical Explanation
+
+The code is split into two main folders: backend and frontend. The server.js file hasn’t been changed at all it’s still exactly the same as the one that came with the test.
+
+For the React project, I used Vite because it needs less setup than create-react-app, and code changes show up way faster.
+
+All the styles are just plain CSS, no frameworks involved.
+
+All the images and icons used in the project are in the /assets folder, and I import them into components using ES Modules syntax (like import logo from '@/assets/logo.svg').
+
+React components are organized using a “one folder per component” structure to keep things tidy. The smaller, reusable components are inside the /common folder. Only the main MultiStepForm component sits on its own.
+
+All the server requests are in the /logic folder. I use try...catch with async/await to catch any errors during requests and to keep the code nice and readable.

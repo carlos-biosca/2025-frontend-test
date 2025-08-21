@@ -1,4 +1,4 @@
-import { useState, useRef } from "react";
+import { useState, useRef, useEffect } from "react";
 import { useFormContext } from "@context/useFormContext";
 
 import Title from "@components/common/Title";
@@ -15,10 +15,27 @@ import "./Verify.css";
 const initialCode = Array(6).fill("");
 
 const Verify = () => {
-  const { email, prevStep, nextStep, setUserId } = useFormContext();
-  const [code, setCode] = useState(initialCode);
-  const [error, setError] = useState("");
+  const { email, prevStep, nextStep, setUserId, emailCode, setEmailCode } =
+    useFormContext();
   const inputs = useRef([]);
+  const [error, setError] = useState("");
+  const [code, setCode] = useState(initialCode);
+  const [countdown, setCountdown] = useState(null);
+
+  useEffect(() => {
+    if (emailCode) {
+      setCountdown(300);
+      const interval = setInterval(() => {
+        setCountdown(prevCountdown => {
+          if (prevCountdown === 0) {
+            clearInterval(interval);
+          }
+          return prevCountdown - 1;
+        });
+      }, 1000);
+      return () => clearInterval(interval);
+    }
+  }, [emailCode]);
 
   const handleDigitChange = (e, index) => {
     const { value } = e.target;
@@ -39,6 +56,7 @@ const Verify = () => {
     setCode(initialCode);
     if (res.user_id) {
       setUserId(res.user_id);
+      setEmailCode(null);
       nextStep();
     }
     if (res.error) setError(res.error);
@@ -48,6 +66,7 @@ const Verify = () => {
     e.preventDefault();
     setError("");
     const res = await submitEmail(email);
+    if (res.code) setEmailCode(res.code);
     if (res.error) setError(res.error);
   };
 
@@ -65,6 +84,15 @@ const Verify = () => {
           classes="only-mobile"
         />
         <Benefits />
+        {countdown > 0 ? (
+          <div className="verify__code">
+            Code <span className="verify__code--bold">{emailCode}</span> is
+            valid for{" "}
+            <span className="verify__countdown">{`${Math.floor(
+              countdown / 60
+            )}:${(countdown % 60).toString().padStart(2, "0")}`}</span>
+          </div>
+        ) : null}
       </section>
       <section>
         <Title

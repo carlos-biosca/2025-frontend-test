@@ -5,6 +5,7 @@ export const FormProvider = ({ children }) => {
   const [currentStep, setCurrentStep] = useState(0);
   const [email, setEmail] = useState("");
   const [userId, setUserId] = useState(null);
+  const [emailCode, setEmailCode] = useState(null);
 
   const nextStep = () => setCurrentStep(currentStep + 1);
   const prevStep = () => setCurrentStep(currentStep - 1);
@@ -17,6 +18,8 @@ export const FormProvider = ({ children }) => {
         prevStep,
         email,
         setEmail,
+        emailCode,
+        setEmailCode,
         userId,
         setUserId
       }}

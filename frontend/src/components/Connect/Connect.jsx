@@ -10,7 +10,7 @@ import submitEmail from "@logic/submitEmail";
 import "./Connect.css";
 
 const Connect = () => {
-  const { email, setEmail, nextStep } = useFormContext();
+  const { email, setEmail, nextStep, setEmailCode } = useFormContext();
   const [error, setError] = useState("");
 
   const handleEmailChange = e => setEmail(e.target.value);
@@ -18,8 +18,11 @@ const Connect = () => {
   const handleSubmit = async e => {
     e.preventDefault();
     const res = await submitEmail(email);
+    if (res.code) {
+      setEmailCode(res.code);
+      nextStep();
+    }
     if (res.error) setError(res.error);
-    else nextStep();
   };
 
   return (

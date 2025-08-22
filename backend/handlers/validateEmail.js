@@ -1,30 +1,30 @@
-const { sendResponse } = require('../utils/response');
 const { emailMap } = require('./sendEmail');
 
-function handleValidateEmailCode (req, res, body) {
+function handleValidateEmailCode (req, res) {
   if (req.method !== 'POST') {
-    return sendResponse(res, 405, { error: 'Method Not Allowed' });
+    return res.status(405).json({ error: 'Method Not Allowed' });
   }
 
   try {
-    const { email, code } = body;
+    const { email, code } = req.body;
+
     if (!email || !code) {
-      return sendResponse(res, 400, { error: 'Email and code are required' });
+      return res.status(400).json({ error: 'Email and code are required' });
     }
 
     const isValid = (emailMap[email]?.code || null) === code.toString();
     console.log(`Validating Code: code=${code}, email=${email}: ${isValid ? 'valid' : 'invalid'}`);
 
     if (!isValid) {
-      return sendResponse(res, 400, { error: 'Invalid code or email' });
+      return res.status(400).json({ error: 'Invalid code or email' });
     }
 
     delete emailMap[email];
-    return sendResponse(res, 200, {
+    return res.status(200).json({
       user_id: Math.ceil(1e5 + Math.random() * 1e8)
     });
   } catch {
-    return sendResponse(res, 400, { error: 'Invalid parameters' });
+    return res.status(400).json({ error: 'Invalid parameters' });
   }
 }
 

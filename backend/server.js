@@ -31,10 +31,10 @@ app.use(cors({
 app.use(express.json());
 
 
-app.post('/api/send-email', (req, res) => handleSendEmail(req, res, req.body));
-app.post('/api/validate-email', (req, res) => handleValidateEmailCode(req, res, req.body));
-app.get('/api/products', (req, res) => handleGetProducts(req, res, req.query));
-app.post('/api/start-trial', (req, res) => handleStartTrial(req, res, req.body));
+app.post('/api/send-email', handleSendEmail);
+app.post('/api/validate-email', handleValidateEmailCode);
+app.get('/api/products', handleGetProducts);
+app.post('/api/start-trial', handleStartTrial);
 
 
 app.use(express.static(path.join(__dirname, '../frontend/build')));

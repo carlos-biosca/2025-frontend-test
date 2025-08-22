@@ -1,16 +1,16 @@
-const { sendResponse } = require('../utils/response');
-
-function handleStartTrial (req, res, body) {
+function handleStartTrial (req, res) {
   if (req.method !== 'POST') {
-    return sendResponse(res, 405, { error: 'Method Not Allowed' });
+    return res.status(405).json({ error: 'Method Not Allowed' });
   }
 
+  const body = req.body;
+
   if (!body.user_id) {
-    return sendResponse(res, 400, { error: 'User ID is required' });
+    return res.status(400).json({ error: 'User ID is required' });
   }
 
   console.log(`User user_id=${body.user_id} started trial!`);
-  return sendResponse(res, 200, {});
+  return res.status(200).json({});
 }
 
 module.exports = { handleStartTrial };

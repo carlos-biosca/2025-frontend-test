@@ -1,15 +1,16 @@
-# Technical Assessment - Frontend Engineer Position
+# Multistep Plan Subscription
 
 ## How to use
 
 1. Clone the repository.
-2. Open console and start the server with `npm run server`
-3. Open a new console and navigate to the frontend directory `cd frontend`
-4. Install frontend dependencies with `npm install`
-5. Run the frontend development server with `npm run dev`
-6. Open a tab in `http://localhost:5173/`
+2. Install backend dependencies with `npm install`
+3. Open console and start the server with `npm run start`
+4. Open a new console and navigate to the frontend directory `cd frontend`
+5. Install frontend dependencies with `npm install`
+6. Run the frontend development server with `npm run dev`
+7. Open a tab in `http://localhost:5173/`
 
-## Steps
+## Steps to follow
 
 1. Connect your account introducing a valid email.
 2. Get verified introducing the code received.
@@ -23,3 +24,4 @@
 - Css
 - Javascript
 - Nodejs
+- Express

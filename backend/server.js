@@ -1,72 +1,50 @@
-const http = require('http');
-const url = require('url');
+const express = require('express');
+const cors = require('cors');
+const path = require('path');
+
 const { handleSendEmail } = require('./handlers/sendEmail');
 const { handleValidateEmailCode } = require('./handlers/validateEmail');
 const { handleGetProducts } = require('./handlers/getProducts');
 const { handleStartTrial } = require('./handlers/startTrial');
-const { sendResponse } = require('./utils/response');
 
-// CORS setup
+const app = express();
+const PORT = process.env.PORT || 8080;
+
+
 const allowedOrigins = [
   'http://localhost:5173',
-  'https://TU-APP-FRONTEND.herokuapp.com'
+  'https://multistepform-9a317a1cf93d.herokuapp.com'
 ];
 
-function setCorsHeaders (req, res) {
-  const origin = req.headers.origin;
-  if (allowedOrigins.includes(origin)) {
-    res.setHeader('Access-Control-Allow-Origin', origin);
-  }
-  res.setHeader('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE, OPTIONS');
-  res.setHeader('Access-Control-Allow-Headers', 'Content-Type, Authorization');
-  res.setHeader('Access-Control-Allow-Credentials', 'true');
-}
-
-const API_HANDLERS = {
-  '/api/send-email': handleSendEmail,
-  '/api/validate-email': handleValidateEmailCode,
-  '/api/products': handleGetProducts,
-  '/api/start-trial': handleStartTrial
-};
-
-const server = http.createServer((req, res) => {
-  setCorsHeaders(req, res);
-
-  if (req.method === 'OPTIONS') {
-    res.writeHead(200);
-    res.end();
-    return;
-  }
-
-  const parsedUrl = url.parse(req.url, true);
-  const path = parsedUrl.pathname;
-  const query = parsedUrl.query;
-
-  let rawBody = '';
-  req.on('data', chunk => {
-    rawBody += chunk.toString();
-  });
-
-  req.on('end', () => {
-    let body = {};
-    if (rawBody) {
-      try {
-        body = JSON.parse(rawBody);
-      } catch {
-        return sendResponse(res, 400, { error: 'Invalid JSON body' });
-      }
+app.use(cors({
+  origin: function (origin, callback) {
+    if (!origin) return callback(null, true);
+    if (allowedOrigins.indexOf(origin) === -1) {
+      const msg = 'El CORS policy no permite este origen: ' + origin;
+      return callback(new Error(msg), false);
     }
+    return callback(null, true);
+  },
+  credentials: true
+}));
 
-    const data = req.method === 'GET' ? query : body;
+app.use(express.json());
 
-    (API_HANDLERS[path]
-      ? API_HANDLERS[path](req, res, data)
-      : sendResponse(res, 404, { error: 'Not found' })
-    );
-  });
+
+app.post('/api/send-email', (req, res) => handleSendEmail(req, res, req.body));
+app.post('/api/validate-email', (req, res) => handleValidateEmailCode(req, res, req.body));
+app.get('/api/products', (req, res) => handleGetProducts(req, res, req.query));
+app.post('/api/start-trial', (req, res) => handleStartTrial(req, res, req.body));
+
+
+app.use(express.static(path.join(__dirname, '../frontend/build')));
+
+
+app.get('*', (req, res) => {
+  res.sendFile(path.resolve(__dirname, '../frontend/build', 'index.html'));
 });
 
-const PORT = Number.parseInt(process.env.PORT || 8080);
-server.listen(PORT, () => {
-  console.log(`Server is running at http://localhost:${PORT}`);
+
+app.listen(PORT, () => {
+  console.log(`Server running on port ${PORT}`);
 });

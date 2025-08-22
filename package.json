@@ -8,6 +8,9 @@
     "start": "node backend/server.js",
     "heroku-postbuild": "cd frontend && npm install && npm run build"
   },
+  "engines": {
+    "node": ">=22.15.0 <23.0.0"
+  },
   "keywords": [],
   "author": "",
   "license": "ISC",

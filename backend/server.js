@@ -1,20 +1,26 @@
 const http = require('http');
 const url = require('url');
-const {
-  handleSendEmail
-} = require('./handlers/sendEmail');
-const {
-  handleValidateEmailCode
-} = require('./handlers/validateEmail');
-const {
-  handleGetProducts
-} = require('./handlers/getProducts');
-const {
-  handleStartTrial
-} = require('./handlers/startTrial');
-const {
-  sendResponse
-} = require('./utils/response');
+const { handleSendEmail } = require('./handlers/sendEmail');
+const { handleValidateEmailCode } = require('./handlers/validateEmail');
+const { handleGetProducts } = require('./handlers/getProducts');
+const { handleStartTrial } = require('./handlers/startTrial');
+const { sendResponse } = require('./utils/response');
+
+// CORS setup
+const allowedOrigins = [
+  'http://localhost:5173',
+  'https://TU-APP-FRONTEND.herokuapp.com'
+];
+
+function setCorsHeaders (req, res) {
+  const origin = req.headers.origin;
+  if (allowedOrigins.includes(origin)) {
+    res.setHeader('Access-Control-Allow-Origin', origin);
+  }
+  res.setHeader('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE, OPTIONS');
+  res.setHeader('Access-Control-Allow-Headers', 'Content-Type, Authorization');
+  res.setHeader('Access-Control-Allow-Credentials', 'true');
+}
 
 const API_HANDLERS = {
   '/api/send-email': handleSendEmail,
@@ -24,6 +30,14 @@ const API_HANDLERS = {
 };
 
 const server = http.createServer((req, res) => {
+  setCorsHeaders(req, res);
+
+  if (req.method === 'OPTIONS') {
+    res.writeHead(200);
+    res.end();
+    return;
+  }
+
   const parsedUrl = url.parse(req.url, true);
   const path = parsedUrl.pathname;
   const query = parsedUrl.query;
@@ -42,7 +56,7 @@ const server = http.createServer((req, res) => {
         return sendResponse(res, 400, { error: 'Invalid JSON body' });
       }
     }
-    // For GET use query params, for others use parsed JSON body
+
     const data = req.method === 'GET' ? query : body;
 
     (API_HANDLERS[path]
@@ -55,8 +69,4 @@ const server = http.createServer((req, res) => {
 const PORT = Number.parseInt(process.env.PORT || 8080);
 server.listen(PORT, () => {
   console.log(`Server is running at http://localhost:${PORT}`);
-  console.log(`Exposed REST APIs:`);
-  for (const path of Object.keys(API_HANDLERS)) {
-    console.log(`- ${path}`);
-  }
 });

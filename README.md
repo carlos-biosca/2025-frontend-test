@@ -22,4 +22,4 @@
 - React
 - Css
 - Javascript
-- Node.js
+- Nodejs

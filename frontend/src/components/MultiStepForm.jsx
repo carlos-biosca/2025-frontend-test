@@ -1,3 +1,4 @@
+import { useEffect } from "react";
 import { useFormContext } from "@context/useFormContext";
 
 import Connect from "@components/Connect";
@@ -9,6 +10,10 @@ const steps = [<Connect />, <Verify />, <ChoosePlan />, <Congrats />];
 
 const MultiStepForm = () => {
   const { currentStep } = useFormContext();
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [currentStep]);
 
   return <>{steps[currentStep]}</>;
 };

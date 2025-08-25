@@ -103,8 +103,8 @@ const PlanOptions = ({ plan, handlePlanChange, currency }) => {
                 <p className="plan__money">
                   <span>
                     {currency === "USD"
-                      ? `$ ${products?.year.price.us}`
-                      : `${products?.year.price.eu} €`}
+                      ? `$ ${products?.monthly.price.us}`
+                      : `${products?.monthly.price.eu} €`}
                   </span>{" "}
                   /year
                 </p>

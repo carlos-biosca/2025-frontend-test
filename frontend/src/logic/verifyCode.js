@@ -1,6 +1,7 @@
 const verifyCode = async (email, code) => {
   try {
-    const res = await fetch("/api/validate-email", {
+    const apiUrl = import.meta.env.VITE_API_URL;
+    const res = await fetch(`${apiUrl}/api/validate-email`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json"

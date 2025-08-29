@@ -1,6 +1,7 @@
 const startTrial = async (user_id) => {
   try {
-    const res = await fetch("/api/start-trial", {
+    const apiUrl = import.meta.env.VITE_API_URL;
+    const res = await fetch(`${apiUrl}/api/start-trial`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json"

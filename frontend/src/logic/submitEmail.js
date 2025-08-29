@@ -1,6 +1,7 @@
 const submitEmail = async (email) => {
   try {
-    const res = await fetch(`/api/send-email?email=${email}`, {
+    const apiUrl = import.meta.env.VITE_API_URL;
+    const res = await fetch(`${apiUrl}/api/send-email?email=${email}`, {
       method: "GET",
       headers: {
         "Content-Type": "application/json"

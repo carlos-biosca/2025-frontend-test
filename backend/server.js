@@ -28,7 +28,7 @@ app.use(cors({
 
 app.use(express.json());
 
-app.post('/api/send-email', handleSendEmail);
+app.get('/api/send-email', handleSendEmail);
 app.post('/api/validate-email', handleValidateEmailCode);
 app.get('/api/products', handleGetProducts);
 app.post('/api/start-trial', handleStartTrial);

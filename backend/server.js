@@ -1,6 +1,5 @@
 const express = require('express');
 const cors = require('cors');
-const path = require('path');
 
 const { handleSendEmail } = require('./handlers/sendEmail');
 const { handleValidateEmailCode } = require('./handlers/validateEmail');
@@ -29,20 +28,14 @@ app.use(cors({
 
 app.use(express.json());
 
-
 app.post('/api/send-email', handleSendEmail);
 app.post('/api/validate-email', handleValidateEmailCode);
 app.get('/api/products', handleGetProducts);
 app.post('/api/start-trial', handleStartTrial);
 
-
-app.use(express.static(path.join(__dirname, '../frontend/dist')));
-
-
-app.get('*', (req, res) => {
-  res.sendFile(path.resolve(__dirname, '../frontend/dist', 'index.html'));
+app.get('/', (req, res) => {
+  res.send('Server is running');
 });
-
 
 app.listen(PORT, () => {
   console.log(`Server running on port ${PORT}`);

@@ -11,7 +11,7 @@ const PORT = process.env.PORT || 8080;
 
 const allowedOrigins = [
   'http://localhost:5173',
-  'https://multistepform-9a317a1cf93d.herokuapp.com'
+  'https://multistep-form-subscription.vercel.app/'
 ];
 
 app.use(cors({

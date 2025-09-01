@@ -9,10 +9,7 @@ const { handleStartTrial } = require('./handlers/startTrial');
 const app = express();
 const PORT = process.env.PORT || 8080;
 
-const allowedOrigins = [
-  'https://multistep-form-subscription.vercel.app',
-  'http://localhost:5173'
-];
+const allowedOrigins = process.env.ALLOWED_ORIGINS
 
 app.use(cors({
   origin: function (origin, callback) {

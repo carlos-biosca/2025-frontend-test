@@ -1,8 +1,9 @@
 .congrats__confetti {
   display: grid;
   place-items: center;
+  min-height: 170px;
   margin-top: 5rem;
-  margin-bottom: 10rem;
+  margin-bottom: 5rem;
 
   @media (min-width: 1440px) {
     margin-top: 2.5rem;

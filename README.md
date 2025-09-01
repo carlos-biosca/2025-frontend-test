@@ -5,6 +5,7 @@
 1. Clone the repository.
 2. Navigate to the backend directory `cd backend`
 3. Install backend dependencies with `npm install`
+   Create a .env file with the following content `ALLOWED_ORIGINS=http://localhost:5173`
 4. Open console and start the server with `npm run start`
 5. Open a new console and navigate to the frontend directory `cd frontend`
 6. Install frontend dependencies with `npm install`

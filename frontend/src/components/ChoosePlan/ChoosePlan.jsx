@@ -15,6 +15,7 @@ const ChoosePlan = () => {
   const [plan, setPlan] = useState("");
   const [currency, setCurrency] = useState("USD");
   const [error, setError] = useState("");
+  const [isLoading, setIsLoading] = useState(false);
 
   const handlePlanChange = e => {
     setPlan(e.target.value);
@@ -27,7 +28,9 @@ const ChoosePlan = () => {
   const handleStartTrial = async e => {
     e.preventDefault();
     if (!plan) return setError("Choosing a plan is required");
+    setIsLoading(true);
     const res = await startTrial(userId);
+    setIsLoading(false);
     if (res.error) setError(res.error);
     else nextStep();
   };
@@ -53,7 +56,7 @@ const ChoosePlan = () => {
           currency={currency}
         />
         <p className="choose__cancel">Cancel anytime.</p>
-        <SubmitButton text="Start my free trial!" trial />
+        <SubmitButton text="Start my free trial!" trial isLoading={isLoading} />
         <ErrorMessage error={error} />
         <div className="choose__links">
           <span>Privacy Policy</span> | <span>Terms of Service</span> |{" "}

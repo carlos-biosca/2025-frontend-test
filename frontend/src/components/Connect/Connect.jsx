@@ -12,12 +12,15 @@ import "./Connect.css";
 const Connect = () => {
   const { email, setEmail, nextStep, setEmailCode } = useFormContext();
   const [error, setError] = useState("");
+  const [isLoading, setIsLoading] = useState(false);
 
   const handleEmailChange = e => setEmail(e.target.value);
 
   const handleSubmit = async e => {
     e.preventDefault();
+    setIsLoading(true);
     const res = await submitEmail(email);
+    setIsLoading(false);
     if (res.code) {
       setEmailCode(res.code);
       nextStep();
@@ -67,7 +70,7 @@ const Connect = () => {
             />
             Send Me Offers, News, and Fun Stuff!
           </label>
-          <SubmitButton text="Connect" />
+          <SubmitButton text="Connect" isLoading={isLoading} />
           <ErrorMessage error={error} />
         </form>
         <small className="connect__terms only-mobile">

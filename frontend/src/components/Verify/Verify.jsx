@@ -21,6 +21,7 @@ const Verify = () => {
   const [error, setError] = useState("");
   const [code, setCode] = useState(initialCode);
   const [countdown, setCountdown] = useState(null);
+  const [isLoading, setIsLoading] = useState(false);
 
   useEffect(() => {
     if (emailCode) {
@@ -51,8 +52,10 @@ const Verify = () => {
 
   const handleSubmit = async e => {
     e.preventDefault();
+    setIsLoading(true);
     const stringCode = code.join("");
     const res = await verifyCode(email, stringCode);
+    setIsLoading(false);
     setCode(initialCode);
     if (res.user_id) {
       setUserId(res.user_id);
@@ -65,7 +68,9 @@ const Verify = () => {
   const handleResend = async e => {
     e.preventDefault();
     setError("");
+    setIsLoading(true);
     const res = await submitEmail(email);
+    setIsLoading(false);
     if (res.code) setEmailCode(res.code);
     if (res.error) setError(res.error);
   };
@@ -115,7 +120,7 @@ const Verify = () => {
           <p className="resend only-desktop">
             Didn't get an email? <span onClick={handleResend}>Resend Code</span>
           </p>
-          <SubmitButton text="Verify" />
+          <SubmitButton text="Verify" isLoading={isLoading} />
           <ErrorMessage error={error} />
         </form>
         <p className="resend only-mobile">

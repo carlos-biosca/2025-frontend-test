@@ -5,13 +5,13 @@
 1. Clone the repository.
 2. Navigate to the backend directory `cd backend`
 3. Install backend dependencies with `npm install`
-   Create a .env file with the following content `ALLOWED_ORIGINS=http://localhost:5173`
-4. Open console and start the server with `npm run start`
-5. Open a new console and navigate to the frontend directory `cd frontend`
-6. Install frontend dependencies with `npm install`
-7. Create a .env.development file with the following content `VITE_API_URL=http://localhost:8080`
-8. Run the frontend development server with `npm run dev`
-9. Open a tab in `http://localhost:5173/`
+4. Create a .env file with the following content `ALLOWED_ORIGINS=http://localhost:5173`
+5. Open console and start the server with `npm run start`
+6. Open a new console and navigate to the frontend directory `cd frontend`
+7. Install frontend dependencies with `npm install`
+8. Create a .env.development file with the following content `VITE_API_URL=http://localhost:8080`
+9. Run the frontend development server with `npm run dev`
+10. Open a tab in `http://localhost:5173/`
 
 ## Steps to follow
 
